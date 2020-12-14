@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap");
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: url("../img/over.jpg");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#btn,
+#btn2{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  line-height: 100vh;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px #333;
+  animation: start 2.5s infinite;
+  z-index: 2;
+}
+#btn2 {
+  top: 20%;
+  display: none;
+}
+#thx{
+  display: none;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0 0 10px #333;
+  z-index: 2;
+}
+
+#tip {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 150px;
+  line-height: 150px;
+  bottom: 0%;
+  background: #000;
+  color: #fff;
+  font-size: 2.5rem;
+  display: none;
+}
+.main {
+  width: 100vw;
+  display: none;
+  position: relative;
+}
+.main1{
+  width: 100vw;
+  display: none;
+  height: 100vh;
+  align-items: center;
+}
+.vid{
+  position: relative;
+  width: 100vw;
+}
+#openc {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  color: #fff;
+  font-size: 2rem;
+  display: none;
+}
+.go{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  background: url("../img/gaover.jpg");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.ed{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  background: url("../img/clear.jpg");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes start {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tips {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
