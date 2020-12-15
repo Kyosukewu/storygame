@@ -9,13 +9,14 @@ let sstart = document.getElementById("stagestart");
 let stage1 = document.getElementById("stage1");
 let gover = document.getElementById("over");
 let clear = document.getElementById("clear");
+let thx = document.getElementById("thx");
 
 btn.addEventListener("click", start);
 btn2.addEventListener("click", gs);
 mainmv.addEventListener("click", tip);
 mainmv.addEventListener("dblclick", skip);
 // stage1.addEventListener("click", tip);
-stage1.addEventListener("dblclick", skipq);
+// stage1.addEventListener("dblclick", skipq);
 video.addEventListener("pause", gs);
 
 function start() {
@@ -54,15 +55,18 @@ function skipq(){
     } else {
       stage1.pause();
       stage1.currentTime = 0;
-
     }
   });
 }
 
 function gs() {
   mainmv.style.display = "none";
+  gover.style.display = "none";
+  btn.style.display = "none";
+  btn2.style.display = "none";
   Swal.fire({
-    title: "蘿拉姊姊的急流冒險，準備好開始體驗了嗎?",
+    title: "蘿拉姊姊的急流冒險",
+    text: "過程中會遇到許多危險，請在時限內選擇最佳的選項幫助蘿拉度過難關",
     showLoaderOnConfirm: true,
     confirmButtonText: "準備好了!!",
     cancelButtonText: "修但幾咧!",
@@ -75,7 +79,6 @@ function gs() {
         allowOutsideClick: false,
       }).then(start);
     } else {
-      name = result.value;
       Swal.fire({
         title: "好極了，就知道你準備好了",
         text: "請開始闖關挑戰",
@@ -88,9 +91,10 @@ function st1() {
   sstart.style.display = "flex";
   stage1.setAttribute("src", "video/s01.mp4");
   stage1.play();
-  setTimeout(q1,35500);
-  // setTimeout(q1, 1000);
-}
+  let st=setTimeout(q1,35500);
+  // let st=setTimeout(q1, 5000);
+  st();
+  }
 
 function q1() {
   Swal.fire({
@@ -178,7 +182,7 @@ function q2() {
 function q3() {
   Swal.fire({
     title: "想辦法保命!",
-    timer: 2000,
+    timer: 3000,
     confirmButtonText: "使用攀岩鈎",
     confirmButtonColor:'#333',
     showDenyButton: true,
@@ -209,7 +213,7 @@ function q3() {
 function q4() {
   Swal.fire({
     title: "主降落傘已損毀",
-    timer: 1500,
+    timer: 2000,
     confirmButtonText: "轉身華麗跳水",
     confirmButtonColor:'#333',
     showDenyButton: true,
@@ -232,7 +236,7 @@ function q4() {
   } else if(result.dismiss === "cancel"){
     Swal.fire({
       title: "靈機一動!!",
-      timer: 1000,
+      timer: 1500,
       confirmButtonText: "啟動副傘!!",
       timerProgressBar: true,
       allowOutsideClick: false,
@@ -323,7 +327,7 @@ function q6() {
       if(result.isConfirmed){
           stage1.setAttribute("src", "video/s07.mp4");
           stage1.play();
-          setTimeout(finish(1), 27000);
+          setTimeout(finish, 27000);
           // setTimeout(finish(1), 1000);
       }else if(result.dismiss === Swal.DismissReason.timer){
         tipd.style.display = "block";
@@ -350,22 +354,19 @@ function redo() {
   }).then(function (result) {
     if (result.dismiss === "cancel") {
       sstart.style.display = "none";
-      over(1);
+      over();
     } else {
       gs();
     }
   });
 }
 
-function finish(end) {
-  if (end) {
+function finish() {
     sstart.style.display = "none";
     clear.style.display = "flex";
-  }
+    thx.style.display = "block";
 }
-function over(end) {
-  if (end) {
+function over() {
     gover.style.display = "flex";
     btn2.style.display = "block";
-  }
 }
