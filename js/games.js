@@ -11,9 +11,12 @@ let gover = document.getElementById("over");
 let clear = document.getElementById("clear");
 
 btn.addEventListener("click", start);
-btn2.addEventListener("click", start);
+btn2.addEventListener("click", gs);
 mainmv.addEventListener("click", tip);
 mainmv.addEventListener("dblclick", skip);
+// stage1.addEventListener("click", tip);
+stage1.addEventListener("dblclick", skipq);
+video.addEventListener("pause", gs);
 
 function start() {
   gover.style.display = "none";
@@ -36,8 +39,25 @@ function skip() {
   video.currentTime = 0;
   mainmv.style.display = "none";
 }
+function skipq(){
+  stage1.pause();
+  Swal.fire({
+    title: "確定跳過這段動畫?",
+    showLoaderOnConfirm: true,
+    confirmButtonText: "好窩!",
+    cancelButtonText: "修但幾咧!",
+    showCancelButton: true,
+    allowOutsideClick: false,
+  }).then(function (result) {
+    if (result.dismiss === "cancel") {
+      stage1.play();
+    } else {
+      stage1.pause();
+      stage1.currentTime = 0;
 
-video.addEventListener("pause", gs);
+    }
+  });
+}
 
 function gs() {
   mainmv.style.display = "none";
