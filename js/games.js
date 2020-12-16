@@ -26,6 +26,7 @@ function start() {
   btn.style.display = "none";
   btn2.style.display = "none";
 }
+
 function tip() {
   hits.style.display = "block";
   hits.style.animation = "tips 2s forwards";
@@ -34,11 +35,13 @@ function tip() {
   };
   setTimeout(hid, 2000);
 }
+
 function skip() {
   video.pause();
   video.currentTime = 0;
   mainmv.style.display = "none";
 }
+
 function skipq(){
   stage1.pause();
   Swal.fire({
