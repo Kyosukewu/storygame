@@ -4,6 +4,7 @@ let btn2 = document.getElementById("btn2");
 let mainmv = document.getElementById("mainmv");
 let video = document.getElementById("open");
 let hits = document.getElementById("openc");
+let mvhits = document.getElementById("mvc");
 let tipd = document.getElementById("tip");
 let sstart = document.getElementById("stagestart");
 let stage1 = document.getElementById("stage1");
@@ -15,9 +16,13 @@ btn.addEventListener("click", start);
 btn2.addEventListener("click", gs);
 mainmv.addEventListener("click", tip);
 mainmv.addEventListener("dblclick", skip);
-// stage1.addEventListener("click", tip);
-// stage1.addEventListener("dblclick", skipq);
+
+stage1.addEventListener("click", tip2);
+stage1.addEventListener("dblclick", skipq);
 video.addEventListener("pause", gs);
+
+let skipMV;
+
 
 function start() {
   gover.style.display = "none";
@@ -35,11 +40,22 @@ function tip() {
   };
   setTimeout(hid, 2000);
 }
+
+function tip2() {
+  mvhits.style.display = "block";
+  mvhits.style.animation = "tips 2s forwards";
+  let hid = function () {
+    mvhits.style.display = "none";
+  };
+  setTimeout(hid, 2000);
+}
+
 function skip() {
   video.pause();
   video.currentTime = 0;
   mainmv.style.display = "none";
 }
+
 function skipq(){
   stage1.pause();
   Swal.fire({
@@ -55,6 +71,8 @@ function skipq(){
     } else {
       stage1.pause();
       stage1.currentTime = 0;
+      removeInterval(skipMV);
+      q2()
     }
   });
 }
@@ -91,8 +109,8 @@ function st1() {
   sstart.style.display = "flex";
   stage1.setAttribute("src", "video/s01.mp4");
   stage1.play();
-  let st=setTimeout(q1,35500);
-  // let st=setTimeout(q1, 5000);
+  // skipMV=setTimeout(q1,35500);
+  skipMV=setTimeout(q1, 5000);
   st();
   }
 
