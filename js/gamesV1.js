@@ -51,7 +51,27 @@ function skip() {
   mainmv.style.display = "none";
 }
 
-function skipq(goq) {
+// function skipq(){
+//   stage1.pause();
+//   Swal.fire({
+//     title: "確定跳過這段動畫?",
+//     showLoaderOnConfirm: true,
+//     confirmButtonText: "好窩!",
+//     cancelButtonText: "修但幾咧!",
+//     showCancelButton: true,
+//     allowOutsideClick: false,
+//   }).then(function (result) {
+//     if (result.dismiss === "cancel") {
+//       stage1.play();
+//     } else {
+//       stage1.pause();
+//       stage1.currentTime = 0;
+//       q1()
+//     }
+//   });
+// }
+
+function skipq(goq){
   stage1.pause();
   Swal.fire({
     title: "確定跳過這段動畫?",
@@ -66,47 +86,36 @@ function skipq(goq) {
     } else {
       stage1.pause();
       stage1.currentTime = 0;
-      goq();
+      goq()
     }
   });
 }
 
-// function dead() {
-//   Swal.fire({
-//     title: "被你玩死了還想掙扎什麼啊?",
-//     showLoaderOnConfirm: true,
-//     confirmButtonText: "QQ斯米搭~",
-//     allowOutsideClick: false,
-//   });
-// }
-
-function fight() {
-  stage1.pause();
+function dead(){
   Swal.fire({
-    title: "別一直跳過啦！切影片很累ㄟ給我看完!! 要結束了",
+    title: "被你玩死了還想掙扎什麼啊?",
+    showLoaderOnConfirm: true,
+    confirmButtonText: "QQ斯米搭~",
+    allowOutsideClick: false,
+  })
+}
+
+function clearg(){
+  Swal.fire({
+    title: "別一直跳過啦 切影片很累ㄟ 給我看完!!",
     showLoaderOnConfirm: true,
     confirmButtonText: "好ㄅ",
     allowOutsideClick: false,
-  }).then(function (result) {
-    if (result.isConfirmed) {
-      stage1.play();
-    }
-  });
+  })
 }
 
+
+
 function gs() {
-  //初始化影片配置
-  isdead.style.display = "none";
   mainmv.style.display = "none";
   gover.style.display = "none";
   btn.style.display = "none";
   btn2.style.display = "none";
-  stage1.style.display = "block";
-  stage1.setAttribute("src", "video/s01.mp4");
-  stage1.currentTime = 0;
-  isdead.setAttribute("src", "video/e01.mp4");
-  isdead.currentTime = 0;
-
   Swal.fire({
     title: "蘿拉姊姊的急流冒險",
     text: "過程中會遇到許多危險，請在時限內選擇最佳的選項幫助蘿拉度過難關",
@@ -134,12 +143,12 @@ function gs() {
 function st1() {
   sstart.style.display = "flex";
   stage1.play();
-  stage1.addEventListener("dblclick", function () {
-    skipq(q1);
-  });
-  stage1.addEventListener("ended", function () {
-    q1();
-  });
+  stage1.addEventListener("dblclick",function(){
+    skipq(q1)
+})
+  stage1.addEventListener("ended",function () {
+      q1()
+    })
 }
 
 function q1() {
@@ -166,22 +175,23 @@ function q1() {
       result.dismiss === Swal.DismissReason.timer
     ) {
       tipd.style.display = "block";
-      stage1.pause();
-      stage1.style.display = "none";
-      isdead.style.display = "block";
-      isdead.play();
-      isdead.addEventListener("ended", function () {
-        redo();
-      });
+      stage1.setAttribute("src", "video/e01.mp4");
+      stage1.play();
+      stage1.addEventListener("dblclick",function(){
+        dead()
+      })
+      stage1.addEventListener("ended",function () {
+        redo()
+      })
     } else if (result.isConfirmed) {
       stage1.setAttribute("src", "video/s02.mp4");
       stage1.play();
-      stage1.addEventListener("dblclick", function () {
-        skipq(q2);
-      });
-      stage1.addEventListener("ended", function () {
-        q2();
-      });
+      stage1.addEventListener("dblclick",function(){
+        skipq(q2)
+      })
+      stage1.addEventListener("ended",function () {
+        q2()
+      })
     }
   });
 }
@@ -206,14 +216,14 @@ function q2() {
   }).then(function (result) {
     if (result.dismiss === "cancel" || result.isDenied || result.isConfirmed) {
       tipd.style.display = "block";
-      stage1.pause();
-      stage1.style.display = "none";
-      isdead.style.display = "block";
-      isdead.setAttribute("src", "video/e01.mp4");
-      isdead.play();
-      isdead.addEventListener("ended", function () {
-        redo();
-      });
+      stage1.setAttribute("src", "video/e01.mp4");
+      stage1.play();
+      stage1.addEventListener("dblclick",function(){
+        dead()
+      })
+      stage1.addEventListener("ended",function () {
+        redo()
+      })
     } else if (result.dismiss === Swal.DismissReason.timer) {
       Swal.fire({
         title: "閃避不及",
@@ -228,22 +238,22 @@ function q2() {
         if (result.isConfirmed) {
           stage1.setAttribute("src", "video/s03.mp4");
           stage1.play();
-          stage1.addEventListener("dblclick", function () {
-            skipq(q3);
-          });
-          stage1.addEventListener("ended", function () {
-            q3();
-          });
+          stage1.addEventListener("dblclick",function(){
+            skipq(q3)
+        })
+          stage1.addEventListener("ended",function () {
+            q3()
+          })
         } else if (result.dismiss === Swal.DismissReason.timer) {
           tipd.style.display = "block";
-          stage1.pause();
-          stage1.style.display = "none";
-          isdead.style.display = "block";
-          isdead.setAttribute("src", "video/e01.mp4");
-          isdead.play();
-          isdead.addEventListener("ended", function () {
-            redo();
-          });
+          stage1.setAttribute("src", "video/e01.mp4");
+          stage1.play();
+          stage1.addEventListener("dblclick",function(){
+            dead()
+          })
+          stage1.addEventListener("ended",function () {
+            redo()
+          })
         }
       });
     }
@@ -274,23 +284,23 @@ function q3() {
       result.dismiss === Swal.DismissReason.timer
     ) {
       tipd.style.display = "block";
-      stage1.pause();
-      stage1.style.display = "none";
-      isdead.style.display = "block";
-      isdead.setAttribute("src", "video/e03.mp4");
-      isdead.play();
-      isdead.addEventListener("ended", function () {
-        redo();
-      });
+      stage1.setAttribute("src", "video/e03.mp4");
+      stage1.play();
+      stage1.addEventListener("dblclick",function(){
+        dead()
+      })
+      stage1.addEventListener("ended",function () {
+        redo()
+      })
     } else if (result.isDenied) {
       stage1.setAttribute("src", "video/s04.mp4");
       stage1.play();
-      stage1.addEventListener("dblclick", function () {
-        skipq(q4);
-      });
-      stage1.addEventListener("ended", function () {
-        q4();
-      });
+      stage1.addEventListener("dblclick",function(){
+        skipq(q4)
+    })
+      stage1.addEventListener("ended",function () {
+        q4()
+      })
     }
   });
 }
@@ -319,14 +329,14 @@ function q4() {
       result.isConfirmed
     ) {
       tipd.style.display = "block";
-      stage1.pause();
-      stage1.style.display = "none";
-      isdead.style.display = "block";
-      isdead.setAttribute("src", "video/e04.mp4");
-      isdead.play();
-      isdead.addEventListener("ended", function () {
-        redo();
-      });
+      stage1.setAttribute("src", "video/e04.mp4");
+      stage1.play();
+      stage1.addEventListener("dblclick",function(){
+        dead()
+    })
+      stage1.addEventListener("ended",function () {
+        redo()
+      })
     } else if (result.dismiss === "cancel") {
       Swal.fire({
         title: "靈機一動!!",
@@ -341,22 +351,22 @@ function q4() {
         if (result.isConfirmed) {
           stage1.setAttribute("src", "video/s05.mp4");
           stage1.play();
-          stage1.addEventListener("dblclick", function () {
-            skipq(q5);
-          });
-          stage1.addEventListener("ended", function () {
-            q5();
-          });
+          stage1.addEventListener("dblclick",function(){
+            skipq(q5)
+        })
+          stage1.addEventListener("ended",function () {
+            q5()
+          })
         } else if (result.dismiss === Swal.DismissReason.timer) {
           tipd.style.display = "block";
-          stage1.pause();
-          stage1.style.display = "none";
-          isdead.style.display = "block";
-          isdead.setAttribute("src", "video/e04.mp4");
-          isdead.play();
-          isdead.addEventListener("ended", function () {
-            redo();
-          });
+          stage1.setAttribute("src", "video/e04.mp4");
+          stage1.play();
+          stage1.addEventListener("dblclick",function(){
+            dead()
+        })
+          stage1.addEventListener("ended",function () {
+            redo()
+          })
         }
       });
     }
@@ -387,23 +397,23 @@ function q5() {
       result.dismiss === Swal.DismissReason.timer
     ) {
       tipd.style.display = "block";
-      stage1.pause();
-      stage1.style.display = "none";
-      isdead.style.display = "block";
-      isdead.setAttribute("src", "video/e05.mp4");
-      isdead.play();
-      isdead.addEventListener("ended", function () {
-        redo();
-      });
+      stage1.setAttribute("src", "video/e05.mp4");
+      stage1.play();
+      stage1.addEventListener("dblclick",function(){
+        dead()
+    })
+      stage1.addEventListener("ended",function () {
+        redo()
+      })
     } else if (result.dismiss === "cancel") {
       stage1.setAttribute("src", "video/s06.mp4");
       stage1.play();
-      stage1.addEventListener("dblclick", function () {
-        skipq(q6);
-      });
-      stage1.addEventListener("ended", function () {
-        q6();
-      });
+      stage1.addEventListener("dblclick",function(){
+        skipq(q6)
+    })
+      stage1.addEventListener("ended",function () {
+        q6()
+      })
     }
   });
 }
@@ -428,14 +438,14 @@ function q6() {
   }).then(function (result) {
     if (result.dismiss === "cancel" || result.isConfirmed) {
       tipd.style.display = "block";
-      stage1.pause();
-      stage1.style.display = "none";
-      isdead.style.display = "block";
-      isdead.setAttribute("src", "video/e06.mp4");
-      isdead.play();
-      isdead.addEventListener("ended", function () {
-        redo();
-      });
+      stage1.setAttribute("src", "video/e06.mp4");
+      stage1.play();
+      stage1.addEventListener("dblclick",function(){
+        dead()
+    })
+      stage1.addEventListener("ended",function () {
+        redo()
+      })
     } else if (result.isDenied || result.dismiss === Swal.DismissReason.timer) {
       Swal.fire({
         title: "",
@@ -450,24 +460,23 @@ function q6() {
         if (result.isConfirmed) {
           stage1.setAttribute("src", "video/s07.mp4");
           stage1.play();
-          stage1.addEventListener("dblclick", function () {
-            fight();
-          });
-          stage1.addEventListener("ended", function () {
-            stage1.currentTime=0
+          stage1.addEventListener("dblclick",function(){
+            clearg()
+        })
+          stage1.addEventListener("ended",function () {
+            finish()
             stage1.pause();
-            finish();
-          });
+          })
         } else if (result.dismiss === Swal.DismissReason.timer) {
           tipd.style.display = "block";
-          stage1.pause();
-          stage1.style.display = "none";
-          isdead.style.display = "block";
-          isdead.setAttribute("src", "video/e06.mp4");
-          isdead.play();
-          isdead.addEventListener("ended", function () {
-            redo();
-          });
+          stage1.setAttribute("src", "video/e06.mp4");
+          stage1.play();
+          stage1.addEventListener("dblclick",function(){
+            dead()
+        })
+          stage1.addEventListener("ended",function () {
+            redo()
+          })
         }
       });
     }
@@ -494,24 +503,10 @@ function redo() {
   });
 }
 
-
 function finish() {
-  stage1.pause();
-  stage1.currentTime=0
   sstart.style.display = "none";
   clear.style.display = "flex";
   thx.style.display = "block";
-  Swal.fire({
-    title: "恭喜過關!!",
-    showLoaderOnConfirm: true,
-    confirmButtonText: "好窩",
-    allowOutsideClick: false,
-  }).then(function (result) {
-    if (result.isConfirmed) {
-      clear.style.display = "none";
-      btn.style.display="block"
-    }
-  });
 }
 function over() {
   gover.style.display = "flex";

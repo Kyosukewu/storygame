@@ -107,6 +107,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+#dead{
+  display: none;
+}
 
 @keyframes start {
   0% {
