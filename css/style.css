@@ -73,7 +73,7 @@ body {
   position: relative;
   width: 100vw;
 }
-#openc {
+#openc,#mvc {
   position: absolute;
   bottom: 2%;
   right: 2%;
