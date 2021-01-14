@@ -473,6 +473,7 @@ function q6() {
         })
           stage1.addEventListener("ended",function () {
             finish()
+            stage1.pause();
           })
         } else if (result.dismiss === Swal.DismissReason.timer) {
           tipd.style.display = "block";
