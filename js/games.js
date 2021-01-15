@@ -454,7 +454,7 @@ function q6() {
             fight();
           });
           stage1.addEventListener("ended", function () {
-            stage1.currentTime=0
+            stage1.currentTime = 0;
             stage1.pause();
             finish();
           });
@@ -494,13 +494,9 @@ function redo() {
   });
 }
 
-
 function finish() {
   stage1.pause();
-  stage1.currentTime=0
-  sstart.style.display = "none";
-  clear.style.display = "flex";
-  thx.style.display = "block";
+  stage1.currentTime = 0;
   Swal.fire({
     title: "恭喜過關!!",
     showLoaderOnConfirm: true,
@@ -508,12 +504,21 @@ function finish() {
     allowOutsideClick: false,
   }).then(function (result) {
     if (result.isConfirmed) {
-      clear.style.display = "none";
-      btn.style.display="block"
+      sstart.style.display = "none";
+      sstart.style.display = "none";
+      clear.style.display = "flex";
+      thx.style.display = "block";
+      setTimeout(restart,10000)
     }
   });
 }
 function over() {
   gover.style.display = "flex";
   btn2.style.display = "block";
+}
+
+function restart(){
+  clear.style.display = "none"
+  thx.style.display = "none"
+  btn.style.display="block"
 }
